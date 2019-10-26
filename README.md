@@ -12,4 +12,4 @@ To understand Deep Q-Network Learning.
 - Tensorflow
 - OpenAI Gym
 ### Gym Setup
-Box2D installation: [code]pip install gym[Box2D][/code]
+Box2D installation: `pip install gym[Box2D]`
