@@ -1,6 +1,7 @@
 import gym
 import numpy as np
 from lunarlander_agent import Lunarlander
+import matplotlib.pyplot as plt 
 
 
 if __name__ == "__main__":
@@ -20,7 +21,7 @@ if __name__ == "__main__":
         
         while not done:
             action = agent.act(state)
-            env.render()
+            # env.render()
 
             state, reward, done, _ = env.step(action)
             run_score += reward

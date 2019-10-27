@@ -53,7 +53,7 @@ def train_model(env, agent, n_episodes = 1000, max_t = 1000, eps_start = 1.0, ep
                 break 
         scores_window.append(score)       # save most recent score
         scores.append(score)              # save most recent score
-        eps = max(eps_end, eps_decay*eps) # decrease epsilon
+        eps = max(eps_end, eps_decay * eps) # decrease epsilon
         print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
         if i_episode % 100 == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
@@ -74,8 +74,8 @@ if __name__ == "__main__":
 
     agent = Lunarlander(state_size = env_state_size, action_size = env_action_size, random_seed = 0)
     
-    # random landing for 10 times, basic understanding of gym env
-    trival_landing(env, agent, render = False, plot = False)
+    # # random landing for 10 times, basic understanding of gym env
+    # trival_landing(env, agent, render = False, plot = False)
 
     # train
     train_model(env, agent)
