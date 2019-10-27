@@ -22,3 +22,7 @@ Box2D installation: `pip install gym[Box2D]`
 ### How to run:
 python run_to_test.py
 
+## Components
+- lunarlander_agent.py: defines agent, Deep Q-Network Learning model
+- lunarlander_train.py: run this code to generate converged model
+- lunarlander_test.py:  run this code to picked trained model, and verify results, of course, provide perfect landing.
