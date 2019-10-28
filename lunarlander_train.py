@@ -39,6 +39,7 @@ def train_model(env, agent, n_episodes = 1000, max_t = 1000, eps_start = 1.0, ep
     # agent.set_agent_details(gamma = 0.99, tau = 1e-3, learning_rate = 5e-4, update_frequency = 4, memory_buffer_size = 100000, batch_size = 64):
     scores = []                        # list containing scores from each episode
     scores_window = deque(maxlen = 100)  # last 100 scores
+
     eps = eps_start                    # initialize epsilon
     for i_episode in range(1, n_episodes + 1):
         state = env.reset()
@@ -72,7 +73,8 @@ if __name__ == "__main__":
     env_state_size = env.observation_space.shape[0]
     env_action_size = env.action_space.n
 
-    agent = Lunarlander(state_size = env_state_size, action_size = env_action_size, random_seed = 0)
+    agent = Lunarlander(state_size = env_state_size, action_size = env_action_size, 
+        random_seed = 0)
     
     # # random landing for 10 times, basic understanding of gym env
     # trival_landing(env, agent, render = False, plot = False)

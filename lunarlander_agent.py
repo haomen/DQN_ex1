@@ -56,7 +56,8 @@ class Memory():
  
 class Lunarlander():
     '''Lunarlander agent, include methods of step, act, Q-learn, update'''
-    def __init__(self, state_size, action_size, random_seed):
+    def __init__(self, state_size, action_size, random_seed, 
+        qnetwork_layer1_units = 64, qnetwork_layer2_units = 64):
         self.__state_size = state_size
         self.__action_size = action_size
         self.__random_seed = random_seed
@@ -67,7 +68,7 @@ class Lunarlander():
         self.set_agent_details()
 
         # Create Q network, current __q_network and next __next_q_network
-        self.__create_q_network()
+        self.__create_q_network(qnetwork_layer1_units, qnetwork_layer2_units)
 
         # Set up memory for replay
         self.__memory = Memory(self.__action_size, self.__memory_buffer_size, self.__batch_size, self.__random_seed)
@@ -82,9 +83,11 @@ class Lunarlander():
         self.__batch_size = batch_size                  # Mini batch size
 
     # Methods to create Q network
-    def __create_q_network(self):
-        self.__q_network = TorchQNetwork(self.__state_size, self.__action_size, self.__random_seed).to(self.__device)
-        self.__next_q_network = TorchQNetwork(self.__state_size, self.__action_size, self.__random_seed).to(self.__device)
+    def __create_q_network(self, qnetwork_layer1_units = 64, qnetwork_layer2_units = 64):
+        self.__q_network = TorchQNetwork(self.__state_size, self.__action_size, 
+            self.__random_seed, qnetwork_layer1_units, qnetwork_layer2_units).to(self.__device)
+        self.__next_q_network = TorchQNetwork(self.__state_size, self.__action_size, 
+            self.__random_seed, qnetwork_layer1_units, qnetwork_layer2_units).to(self.__device)
         self.__optimizer = optim.Adam(self.__q_network.parameters(), lr = self.__learning_rate)
 
     # action
